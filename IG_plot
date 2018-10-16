@@ -1,0 +1,25 @@
+set terminal postscript eps
+
+set output "Baked_Timed_Activation_2.eps"
+set multiplot layout 1,1 title " "
+
+set title "SEP Pressure Readout - Timed Activation" font ",30"
+set xlabel "Time (Hrs)" font ",30" offset 0,-0.5,0
+set ylabel "Pressure (Torr)" font ",30" offset -0.5,0,0
+set logscale y
+set grid
+set format y "%1.2t{/Symbol \327}10^{%L}"
+set key autotitle columnhead
+set datafile missing "nan"
+unset key
+set xtics font ",12"
+set ytics font ",12"
+set label "Log started at - 19:3:12" at screen 0.68, screen 0.8
+set bmargin 5
+set lmargin 15
+plot "/media/amaan/Storage/Work/PPPL/Analysis/SEP/IG_Logs/12102018Timed_Activation.2DAT" u ($1/3600):($2) t 't = 0' w points ps 0.6
+
+unset multiplot 
+
+pause 60
+reread
